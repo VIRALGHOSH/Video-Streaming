@@ -61,7 +61,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NReco.VideoConverter">
-      <HintPath>..\..\..\..\..\Downloads\Compressed\NReco.VideoConverter.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\video_converter_free\NReco.VideoConverter.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
