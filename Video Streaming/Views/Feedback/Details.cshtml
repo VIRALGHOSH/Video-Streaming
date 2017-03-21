@@ -1,0 +1,142 @@
+﻿@model Video_Streaming.Models.Model_feedback
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+<div class="row">
+	<div class="col-xs-12">
+    @using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+        <div id="form" class="form-horizontal">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a href="forms-validation-state.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                        <a href="forms-validation-state.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+                    </div>
+                    <h2 class="panel-title">Feedback</h2>
+                    <p class="panel-subtitle">
+                        Basic validation will display a label with the error after the form control.
+                    </p>
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Name<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.f_name, new { @class = "form-control", @title = "Please enter a country name.", @placeholder = "Country Name" })
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.f_email, new { @class = "form-control", @title = "Please enter a country name.", @placeholder = "Country Name" })
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Feedback Description <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.f_des, new { @class = "form-control", @title = "Please enter a country name.", @placeholder = "Country Name" })
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Feedback Date <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.f_date, new { @class = "form-control", @title = "Please enter a country name.", @placeholder = "Country Name" })
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Feedback Status <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                     @ViewBag.fstatus;
+                        </div>
+                    </div>
+                </div>
+                <footer class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <button type="submit" class="btn btn-primary">Approve</button>
+                            @Html.ActionLink("Cancel", "Index")
+
+                        </div>
+                    </div>
+                </footer>
+            </section>
+        </div>
+}
+</div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@*<h2>Details</h2>
+
+<fieldset>
+    <legend>Model_feedback</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.f_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.f_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.login_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.login_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.f_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.f_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.f_email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.f_email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.f_des)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.f_des)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.f_status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.f_status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.f_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.f_date)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

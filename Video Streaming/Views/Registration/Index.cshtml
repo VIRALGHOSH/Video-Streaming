@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Video_Streaming.Dbml.tbl_registration>
+
+@{
+    ViewBag.Title = "Registraion";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+<section class="panel panel-featured panel-featured-primary">
+	<header class="panel-heading">
+		<div class="panel-actions">
+			<a href="tables-advanced.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+			<a href="tables-advanced.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+		</div>
+	<h2 class="panel-title">Registration</h2>
+	</header>
+	<div class="panel-body">
+       
+	    <table class="table table-bordered table-striped mb-none" id="datatable-default">
+	        <thead>
+	            <tr>
+                    <th>
+            @Html.DisplayNameFor(model => model.reg_fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reg_lname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.login_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reg_photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reg_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.country_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reg_phno)
+        </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+	        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                   <td>
+                        @Html.DisplayFor(modelItem => item.reg_fname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reg_lname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.login_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reg_photo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reg_address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.country_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.state_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.city_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reg_phno)
+                    </td>
+                    <td>
+                    @Html.ActionLink("Details", "Details", new { id=item.login_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.login_id })
+                    </td>
+                </tr>
+              }                
+             </tbody>
+         </table>
+       </div>
+    </section>

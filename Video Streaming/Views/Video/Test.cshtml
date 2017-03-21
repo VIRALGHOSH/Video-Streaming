@@ -1,0 +1,189 @@
+﻿@model Video_Streaming.Models.Model_video_page
+
+
+@{ 
+    ViewBag.Title = Html.DisplayFor(model => model.mdvideo.video_name);
+    ViewBag.videothumb = Html.DisplayFor(model => model.mdvideo.video_thumb);
+    ViewBag.videopath = Html.DisplayFor(model => model.mdvideo.video_path);
+    Layout = "~/Views/Shared/_UserMaster.cshtml";
+}
+
+<div id="page-bar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-sm-8 col-xs-12">
+					<div class="page-title">
+                        @Html.HiddenFor(model => model.mdvideo.video_id)
+                         @Html.HiddenFor(model => model.mdvideo.login_id)
+						<h1 class="text-uppercase">@Html.DisplayFor(model => model.mdvideo.video_name)</h1>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-4 col-xs-12 text-right">
+					<ul class="breadcrumb">
+					    <li>
+					    	<a href="index.html"><i class="fi ion-ios-home"></i>Home</a>
+					    </li>
+					    <li class="active">Video Detail</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Inner page Bar -->
+       
+	<!-- Secondary Section -->
+
+<div id="video-detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-8">
+                <div class="vid-detail-container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="vid-player">
+                                <div id="hlsjsvod" class="fp-slim embed-responsive embed-responsive-16by9">
+                                </div>
+                            </div>
+                            <div class="vid-text">
+                                @*<p><span>By</span> <a href="#">@ViewBag.videoby</a></p>*@
+                                <h1>@Html.DisplayFor(model => model.mdvideo.video_name)</h1>
+                            </div>
+                            <div class="video-info-bar">
+                                <ul class="list-inline list-unstyled info-ul">
+                                    <li><i class="fa fa-calendar"></i>@ViewBag.videodate</li>
+                                    <li><i class="fa fa-eye"></i>@ViewBag.totalview views</li>
+                                    <li class="pull-right sharing-drop">
+                                        <button class="btn"></button>
+                                    </li>
+                                </ul>
+                                <ul class="list-unstyled list-inline pull-right text-right sharing-bar">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="video-detail-text">
+
+                                <p>
+                                   @Html.DisplayFor(model => model.mdvideo.video_des)
+                                </p>
+
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="vid-heading overflow-hidden">
+                                    <span class="wow fadeInUp" data-wow-duration="0.8s">User Comments</span>
+                                    <div class="hding-bottm-line wow zoomIn" data-wow-duration="0.8s"></div>
+                                </div>
+                                <br />
+                            </div>
+                  @foreach (var item in Model.tbcomment) {
+                                <div class="row">
+                                <div class="col-sm-1">
+                                    <div class="thumbnail">
+                                        <img class="img-responsive user-photo" src="@Html.DisplayFor(modelItem => item.tbl_registration.reg_photo)" alt="NA">
+                                    </div>
+                                    <!-- /thumbnail -->
+                                </div>
+                                <!-- /col-sm-1 -->
+
+                                <div class="col-sm-11">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            
+                                            <strong>@Html.DisplayFor(modelItem => item.tbl_registration.reg_fname)</strong> <span class="text-muted">commented @(DateTime.Today.Day - item.comment_date.Day) days ago</span>
+                                        </div>
+                                        <div class="panel-body">
+                                              @Html.DisplayFor(modelItem => item.comment_des)
+                                        </div>
+                                        <!-- /panel-body -->
+                                    </div>
+                                    <!-- /panel panel-default -->
+                                </div>
+                                <!-- /col-sm-5 -->
+                            </div>
+                              }
+
+                            <div id="comment-frm-container" class="col-sm-12">
+                                <div class="vid-heading overflow-hidden">
+                                    <span class="wow fadeInUp" data-wow-duration="0.8s">Leave a comment</span>
+                                    <div class="hding-bottm-line wow zoomIn" data-wow-duration="0.8s"></div>
+                                </div>
+                                <div class="comment-form">
+                                    <div class="row">
+
+
+                                        @using (Html.BeginForm())
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.ValidationSummary(true)
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(model => model.mdcomment.video_id)
+                                                    @Html.HiddenFor(model => model.mdcomment.login_id)
+                                                    @Html.TextAreaFor(model => model.mdcomment.comment_des, new { @class="form-control",@id="cmnt-user-msg",@rows="4", @title="Please enter a Video description." ,@placeholder="MESSAGE" })
+                                                    @Html.ValidationMessageFor(model => model.mdcomment.comment_des)
+
+                                                    <div class="input-top-line"></div>
+                                                    <div class="input-bottom-line"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <button type="submit" class="btn btn-snd">
+                                                    Post Comment
+                                                </button>
+                                            </div>
+    
+                                                }
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4">
+                <div class="sidebar">
+                    <div class="sidebar-vid most-viewd">
+                        <h1 class="sidebar-heading">Most Viewed</h1>
+                        @foreach (var item in Model.lsvideo)
+                        {<div class="most-viewd-container">
+                            <div class="most-viewd-img">
+                                <img class="img-responsive" src='@item.video_thumb' alt="video">
+                            </div>
+                            <div class="most-viewd-text">
+                                <h1><a href="/video/details/@item.video_id">@item.video_name</a></h1>
+                                <p>
+                                    @*<span><i class="fa fa-eye"></i> 534</span>*@
+                                </p>
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+                    <div class="tags">
+                        <h1 class="sidebar-heading">Tags</h1>
+                        <ul class="list-inline list-unstyled">
+                            <li><a href="category-listing.html">Music</a></li>
+                            <li><a href="/home/category/6">Music</a></li>
+                            <li><a href="/home/category/2">Animation</a></li>
+                            <li><a href="/home/category/5">Comedy</a></li>
+                            <li><a href="/home/category/4">Movie Trailers</a></li>
+                            <li><a href="/home/category/7">Nature</a></li>
+                            <li><a href="/home/category/10">Horror</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

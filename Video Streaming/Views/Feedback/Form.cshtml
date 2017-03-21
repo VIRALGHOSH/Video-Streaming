@@ -1,0 +1,75 @@
+﻿@model Video_Streaming.Models.Model_feedback
+
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_UserMaster.cshtml";
+}
+<hr />
+<div class="container">
+    <div class="well form-horizontal">
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+<fieldset>
+
+<!-- Form Name -->
+<legend>Contact Us Today!</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label">Name</label>  
+   <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+        @Html.TextBoxFor(model => model.f_name, new  { @class="form-control", @title="Please enter Your Name." ,@placeholder="Your Name" })
+            @Html.ValidationMessageFor(model => model.f_name)
+    </div>
+  </div>
+</div>
+    <!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label">Email</label>  
+   <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+        @Html.TextBoxFor(model => model.f_email, new  { @class="form-control", @title="Please enter Your Emailidn." ,@placeholder="Your Email goes here" })
+            @Html.ValidationMessageFor(model => model.f_email)
+    </div>
+  </div>
+</div>
+
+<!-- Text area -->
+  
+<div class="form-group">
+  <label class="col-md-4 control-label">Feedback Description</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+          @Html.TextAreaFor(model => model.f_des, new  { @class="form-control", @title="Please enter Feedback." ,@placeholder="Feedback goes here" })
+            @Html.ValidationMessageFor(model => model.f_des)
+
+  </div>
+  </div>
+</div>
+
+<!-- Success message -->
+<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+</fieldset>
+   
+}
+    </div></div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

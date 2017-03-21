@@ -1,0 +1,69 @@
+﻿@model Video_Streaming.Models.Model_video
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Model_video</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.video_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.video_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.login_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.login_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cat_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cat_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sub_cat_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sub_cat_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.video_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.video_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.video_des)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.video_des)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.video_path)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.video_path)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

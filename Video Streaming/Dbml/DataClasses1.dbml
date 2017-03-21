@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_video_streaming" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=35.187.84.85,6546;Initial Catalog=db_video_streaming;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="db_video_streamingConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_category" Member="tbl_categories">
+    <Type Name="tbl_category">
+      <Column Name="cat_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cat_name" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="cat_des" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Association Name="tbl_category_tbl_sub_category" Member="tbl_sub_categories" ThisKey="cat_id" OtherKey="cat_id" Type="tbl_sub_category" />
+      <Association Name="tbl_category_tbl_video" Member="tbl_videos" ThisKey="cat_id" OtherKey="cat_id" Type="tbl_video" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_sub_category" Member="tbl_sub_categories">
+    <Type Name="tbl_sub_category">
+      <Column Name="sub_cat_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cat_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sub_cat_name" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="sub_cat_des" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Association Name="tbl_sub_category_tbl_video" Member="tbl_videos" ThisKey="sub_cat_id" OtherKey="sub_cat_id" Type="tbl_video" />
+      <Association Name="tbl_category_tbl_sub_category" Member="tbl_category" ThisKey="cat_id" OtherKey="cat_id" Type="tbl_category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_city" Member="tbl_cities">
+    <Type Name="tbl_city">
+      <Column Name="city_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="state_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="city_name" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_city_tbl_registration" Member="tbl_registrations" ThisKey="city_id" OtherKey="city_id" Type="tbl_registration" />
+      <Association Name="tbl_country_tbl_city" Member="tbl_country" ThisKey="country_id" OtherKey="country_id" Type="tbl_country" IsForeignKey="true" />
+      <Association Name="tbl_state_tbl_city" Member="tbl_state" ThisKey="state_id" OtherKey="state_id" Type="tbl_state" IsForeignKey="true" />
+      <Association Name="tbl_country_tbl_city1" Member="tbl_country1" ThisKey="country_id" OtherKey="country_id" Type="tbl_country" IsForeignKey="true" />
+      <Association Name="tbl_state_tbl_city1" Member="tbl_state1" ThisKey="state_id" OtherKey="state_id" Type="tbl_state" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_country" Member="tbl_countries">
+    <Type Name="tbl_country">
+      <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="country_name" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_country_tbl_city" Member="tbl_cities" ThisKey="country_id" OtherKey="country_id" Type="tbl_city" />
+      <Association Name="tbl_country_tbl_city1" Member="tbl_cities1" ThisKey="country_id" OtherKey="country_id" Type="tbl_city" />
+      <Association Name="tbl_country_tbl_state" Member="tbl_states" ThisKey="country_id" OtherKey="country_id" Type="tbl_state" />
+      <Association Name="tbl_country_tbl_state1" Member="tbl_states1" ThisKey="country_id" OtherKey="country_id" Type="tbl_state" />
+      <Association Name="tbl_country_tbl_registration" Member="tbl_registrations" ThisKey="country_id" OtherKey="country_id" Type="tbl_registration" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_state" Member="tbl_states">
+    <Type Name="tbl_state">
+      <Column Name="state_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="country_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="state_name" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="tbl_state_tbl_city" Member="tbl_cities" ThisKey="state_id" OtherKey="state_id" Type="tbl_city" />
+      <Association Name="tbl_state_tbl_city1" Member="tbl_cities1" ThisKey="state_id" OtherKey="state_id" Type="tbl_city" />
+      <Association Name="tbl_state_tbl_registration" Member="tbl_registrations" ThisKey="state_id" OtherKey="state_id" Type="tbl_registration" />
+      <Association Name="tbl_country_tbl_state" Member="tbl_country" ThisKey="country_id" OtherKey="country_id" Type="tbl_country" IsForeignKey="true" />
+      <Association Name="tbl_country_tbl_state1" Member="tbl_country1" ThisKey="country_id" OtherKey="country_id" Type="tbl_country" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_view" Member="tbl_views">
+    <Type Name="tbl_view">
+      <Column Name="view_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="login_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="video_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="view_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_login_tbl_view" Member="tbl_login" ThisKey="login_id" OtherKey="login_id" Type="tbl_login" IsForeignKey="true" />
+      <Association Name="tbl_registration_tbl_view" Member="tbl_registration" ThisKey="login_id" OtherKey="reg_id" Type="tbl_registration" IsForeignKey="true" />
+      <Association Name="tbl_video_tbl_view" Member="tbl_video" ThisKey="video_id" OtherKey="video_id" Type="tbl_video" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_complain" Member="tbl_complains">
+    <Type Name="tbl_complain">
+      <Column Name="com_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="login_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="com_sub" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="com_des" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="com_status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="com_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_login_tbl_complain" Member="tbl_login" ThisKey="login_id" OtherKey="login_id" Type="tbl_login" IsForeignKey="true" />
+      <Association Name="tbl_registration_tbl_complain" Member="tbl_registration" ThisKey="login_id" OtherKey="reg_id" Type="tbl_registration" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_feedback" Member="tbl_feedbacks">
+    <Type Name="tbl_feedback">
+      <Column Name="f_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="login_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="f_name" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="f_email" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="f_des" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="f_status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="f_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_login_tbl_feedback" Member="tbl_login" ThisKey="login_id" OtherKey="login_id" Type="tbl_login" IsForeignKey="true" />
+      <Association Name="tbl_registration_tbl_feedback" Member="tbl_registration" ThisKey="login_id" OtherKey="reg_id" Type="tbl_registration" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_gender" Member="tbl_genders">
+    <Type Name="tbl_gender">
+      <Column Name="gen_id" Type="System.Boolean" DbType="Bit NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="gen_name" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_registration" Member="tbl_registrations">
+    <Type Name="tbl_registration">
+      <Column Name="reg_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="reg_fname" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="reg_lname" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="login_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="reg_gender" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="reg_photo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="reg_address" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+      <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="state_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="city_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="reg_phno" Type="System.Decimal" DbType="Decimal(13,0)" CanBeNull="true" />
+      <Association Name="tbl_registration_tbl_view" Member="tbl_views" ThisKey="reg_id" OtherKey="login_id" Type="tbl_view" />
+      <Association Name="tbl_registration_tbl_complain" Member="tbl_complains" ThisKey="reg_id" OtherKey="login_id" Type="tbl_complain" />
+      <Association Name="tbl_registration_tbl_feedback" Member="tbl_feedbacks" ThisKey="reg_id" OtherKey="login_id" Type="tbl_feedback" />
+      <Association Name="tbl_registration_tbl_comment" Member="tbl_comments" ThisKey="reg_id" OtherKey="login_id" Type="tbl_comment" />
+      <Association Name="tbl_registration_tbl_video" Member="tbl_videos" ThisKey="reg_id" OtherKey="login_id" Type="tbl_video" />
+      <Association Name="tbl_registration_tbl_subscription" Member="tbl_subscriptions" ThisKey="reg_id" OtherKey="login_id" Type="tbl_subscription" />
+      <Association Name="tbl_country_tbl_registration" Member="tbl_country" ThisKey="country_id" OtherKey="country_id" Type="tbl_country" IsForeignKey="true" />
+      <Association Name="tbl_city_tbl_registration" Member="tbl_city" ThisKey="city_id" OtherKey="city_id" Type="tbl_city" IsForeignKey="true" />
+      <Association Name="tbl_state_tbl_registration" Member="tbl_state" ThisKey="state_id" OtherKey="state_id" Type="tbl_state" IsForeignKey="true" />
+      <Association Name="tbl_login_tbl_registration" Member="tbl_login" ThisKey="login_id" OtherKey="login_id" Type="tbl_login" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.demo" Member="demos">
+    <Type Name="demo">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_login" Member="tbl_logins">
+    <Type Name="tbl_login">
+      <Column Name="login_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="log_status" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="log_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_login_tbl_view" Member="tbl_views" ThisKey="login_id" OtherKey="login_id" Type="tbl_view" />
+      <Association Name="tbl_login_tbl_complain" Member="tbl_complains" ThisKey="login_id" OtherKey="login_id" Type="tbl_complain" />
+      <Association Name="tbl_login_tbl_feedback" Member="tbl_feedbacks" ThisKey="login_id" OtherKey="login_id" Type="tbl_feedback" />
+      <Association Name="tbl_login_tbl_registration" Member="tbl_registrations" ThisKey="login_id" OtherKey="login_id" Type="tbl_registration" />
+      <Association Name="tbl_login_tbl_comment" Member="tbl_comments" ThisKey="login_id" OtherKey="login_id" Type="tbl_comment" />
+      <Association Name="tbl_login_tbl_subscription" Member="tbl_subscriptions" ThisKey="login_id" OtherKey="login_id" Type="tbl_subscription" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_comment" Member="tbl_comments">
+    <Type Name="tbl_comment">
+      <Column Name="comment_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="login_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="video_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="comment_des" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="comment_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_registration_tbl_comment" Member="tbl_registration" ThisKey="login_id" OtherKey="reg_id" Type="tbl_registration" IsForeignKey="true" />
+      <Association Name="tbl_login_tbl_comment" Member="tbl_login" ThisKey="login_id" OtherKey="login_id" Type="tbl_login" IsForeignKey="true" />
+      <Association Name="tbl_video_tbl_comment" Member="tbl_video" ThisKey="video_id" OtherKey="video_id" Type="tbl_video" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_video" Member="tbl_videos">
+    <Type Name="tbl_video">
+      <Column Name="video_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="login_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cat_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sub_cat_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="video_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="video_des" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="video_path" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="video_thumb" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="video_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="video_paid" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="tbl_video_tbl_view" Member="tbl_views" ThisKey="video_id" OtherKey="video_id" Type="tbl_view" />
+      <Association Name="tbl_video_tbl_comment" Member="tbl_comments" ThisKey="video_id" OtherKey="video_id" Type="tbl_comment" />
+      <Association Name="tbl_registration_tbl_video" Member="tbl_registration" ThisKey="login_id" OtherKey="reg_id" Type="tbl_registration" IsForeignKey="true" />
+      <Association Name="tbl_category_tbl_video" Member="tbl_category" ThisKey="cat_id" OtherKey="cat_id" Type="tbl_category" IsForeignKey="true" />
+      <Association Name="tbl_sub_category_tbl_video" Member="tbl_sub_category" ThisKey="sub_cat_id" OtherKey="sub_cat_id" Type="tbl_sub_category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_subscription" Member="tbl_subscriptions">
+    <Type Name="tbl_subscription">
+      <Column Name="sub_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="login_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sub_pay_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="sub_end_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="sub_amt" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_registration_tbl_subscription" Member="tbl_registration" ThisKey="login_id" OtherKey="reg_id" Type="tbl_registration" IsForeignKey="true" />
+      <Association Name="tbl_login_tbl_subscription" Member="tbl_login" ThisKey="login_id" OtherKey="login_id" Type="tbl_login" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

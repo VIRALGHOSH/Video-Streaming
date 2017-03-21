@@ -1,0 +1,60 @@
+﻿@model Video_Streaming.Models.Model_video_page
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+
+
+@foreach (var item in Model.tbcomment) {
+
+        <div>
+            @Html.DisplayFor(modelItem => item.login_id)
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.video_id)
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.comment_des)
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.comment_date)
+      </div>
+}
+   @foreach (var item in Model.tbcomment) {
+             
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <div class="thumbnail">
+                                        <img class="img-responsive user-photo" src="@Html.DisplayFor(modelItem => item.tbl_registration.reg_phno)">
+                                    </div>
+                                    <!-- /thumbnail -->
+                                </div>
+                                <!-- /col-sm-1 -->
+
+                                <div class="col-sm-11">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">@{var str = "";
+                                            if (item.login_id == 0)
+                                                                     {
+                                                                         str = "Anonymous";
+                                                                     }
+                                                                     else {
+
+                                                                          str = item.tbl_registration.reg_fname;
+                                                                     }
+                                                                     }
+                                            
+                                            <strong>@str</strong> <span class="text-muted">commented @(DateTime.Today.Day - item.comment_date.Day) days ago</span>
+                                        </div>
+                                        <div class="panel-body">
+                                              @Html.DisplayFor(modelItem => item.comment_des)
+                                        </div>
+                                        <!-- /panel-body -->
+                                    </div>
+                                    <!-- /panel panel-default -->
+                                </div>
+                                <!-- /col-sm-5 -->
+                            </div>
+                              }

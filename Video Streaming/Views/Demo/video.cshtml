@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Video_Streaming.Dbml.tbl_video>
+
+@{
+    ViewBag.Title = "user";
+    Layout = "~/Views/Shared/_UserVideo.cshtml";
+}
+            @foreach (var item in Model) {
+
+<div class="col-md-4 col-sm-6">
+									<div class="latest-vid-img-container">		
+										<div class="vid-img">
+											<img class="img-responsive" src='@Url.Content("~/images/nothumbnail.gif")' alt="video image">
+											<a href="/video/details/@Html.DisplayFor(modelItem => item.video_id)" class="play-icon play-md-icon">
+                                                
+							                	<img class="img-responsive play-svg svg" src='@Url.Content("~/images/play-button.svg")' alt="play" onerror="this.src='images/play-button.png'">	                	
+							                </a>
+											<div class="overlay-div"></div>
+										</div>
+										<div class="vid-text">
+											<p><span>By</span> <a href="video-3-column.html#"></a></p>
+											<h1><a href="video-detail.html">@Html.DisplayFor(modelItem => item.video_name)</a></h1>
+											<p class="vid-info-text">
+												<span>4 month ago</span>
+												<span>&#47;</span>
+												<span>
+													From <a href="video-3-column.html#"><i class="fa fa-youtube-play"></i></a>
+												</span>
+												<span>&#47;</span>
+												<span>410 views</span>
+											</p>
+										</div>
+									</div>
+								</div>
+            }                
+
+                			

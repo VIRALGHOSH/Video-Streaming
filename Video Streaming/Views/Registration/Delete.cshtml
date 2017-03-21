@@ -1,0 +1,96 @@
+﻿@model Video_Streaming.Models.Model_Login_Register
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_UserMaster.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Model_registration</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdregister.reg_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdregister.reg_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdregister.reg_fname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdregister.reg_fname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdregister.reg_lname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdregister.reg_lname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdregister.reg_photo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdregister.reg_photo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdlogin.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdlogin.email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdlogin.password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdlogin.password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdregister.reg_address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdregister.reg_address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdregister.country_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdregister.country_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdregister.state_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdregister.state_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdregister.city_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdregister.city_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mdregister.reg_phno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mdregister.reg_phno)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

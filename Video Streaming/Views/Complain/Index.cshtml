@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Video_Streaming.Dbml.tbl_complain>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<section class="panel">
+	<header class="panel-heading">
+		<div class="panel-actions">
+			<a href="tables-advanced.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+			<a href="tables-advanced.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+		</div>
+	<h2 class="panel-title">Complain</h2>
+	</header>
+	<div class="panel-body">
+       
+	           <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-tabletools" data-swf-path='@Url.Content("~/vendor/jquery-datatables/extras/TableTools/csv_xls_pdf.swf")' role="grid" aria-describedby="datatable-tabletools_info">
+
+	        <thead>
+	            <tr>
+                    <th>
+            Login Name
+        </th>
+        <th>
+            Complain Subject
+        </th>
+        <th>
+            Complain Description
+        </th>
+		 <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+	        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_registration.reg_fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.com_sub)
+        </td>
+		 <td>
+            @Html.DisplayFor(modelItem => item.com_des)
+        </td>
+		 <td>
+            @item.com_date.ToShortDateString()
+        </td>
+		 <td>
+             @{
+                        
+                            var str ="";
+                            if(item.com_status == true)
+                            {
+
+                                str = "Approved";
+                            }
+                            else
+                            {
+                                str = "Pending";
+                            }
+                            }    
+                        @str
+        </td>
+
+                    <td>
+            @Html.ActionLink("Details", "Details", new { id=item.com_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.com_id })
+                    </td>
+                </tr>
+              }                
+             </tbody>
+         </table>
+       </div>
+    </section>
+
+<table>
+    <tr>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+          
+        </td>
+    </tr>
+}
+
+</table>
+<script>
+            function fnmenu() {
+             
+                $('#complain').addClass('nav-active');
+        }
+        </script>    

@@ -1,0 +1,69 @@
+﻿@model Video_Streaming.Models.Model_sub_category
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+<div class="row">
+	<div class="col-xs-12">
+    @using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+		<div id="form" class="form-horizontal">
+			<section class="panel">
+				<header class="panel-heading">
+					<div class="panel-actions">
+						<a href="forms-validation-state.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+						<a href="forms-validation-state.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+					</div>
+                    <h2 class="panel-title">Sub Category</h2>
+					<p class="panel-subtitle">
+						Basic validation will display a label with the error after the form control.
+					</p>
+				</header>
+				<div class="panel-body">
+						<div class="form-group">
+						<label class="col-sm-3 control-label">Category Name <span class="required">*</span></label>
+						<div class="col-sm-9">
+                                        @Html.HiddenFor(model => model.sub_cat_id)
+							@Html.DropDownListFor(model => model.cat_id,(IEnumerable<SelectListItem>)ViewBag.categoryid,"---select---", new { @class="form-control" })
+                            @Html.ValidationMessageFor(model => model.cat_id)
+						</div>
+					</div>
+						<div class="form-group">
+						<label class="col-sm-3 control-label">Sub Category Name <span class="required">*</span></label>
+						<div class="col-sm-9">
+							@Html.TextBoxFor(model => model.sub_cat_name, new { @class="form-control", @title="Please enter a Sub Category name." ,@placeholder="Sub Category Name" })
+                            @Html.ValidationMessageFor(model => model.sub_cat_name)
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Sub Category description <span class="required">*</span></label>
+						<div class="col-sm-9">
+							@Html.TextBoxFor(model => model.sub_cat_des, new { @class="form-control", @title="Please enter a Sub Category description." ,@placeholder="Sub Category description" })
+                            @Html.ValidationMessageFor(model => model.sub_cat_des)
+						</div>
+					</div>
+				</div>
+
+				<footer class="panel-footer">
+					<div class="row">
+						<div class="col-sm-9 col-sm-offset-3">
+							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="reset" class="btn btn-default">Reset</button>
+						</div>
+					</div>
+				</footer>
+			</section>
+		</div>
+}
+</div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

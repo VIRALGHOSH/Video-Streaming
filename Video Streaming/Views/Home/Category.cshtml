@@ -1,0 +1,30 @@
+﻿@model List<Video_Streaming.Models.Model_video>
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_UserMaster.cshtml";
+}
+<br />
+            @foreach (var item in Model) {
+@*<div class="col-md-4 col-sm-6">*@
+<div class="col-md-3 col-sm-6" style="height:300px">
+
+									<div class="latest-vid-img-container">		
+										<div class="vid-img">
+											<img class="img-thumbnail" src="@item.video_thumb" alt="No Thumbnail">
+											<a href="/video/details/@item.video_id" class="play-icon play-md-icon">
+                                                
+							                	<img class="img-responsive play-svg svg" src='@Url.Content("~/images/play-button.svg")' alt="play" onerror="this.src='images/play-button.png'">	                	
+							                </a>
+											<div class="overlay-div"></div>
+										</div>
+										<div class="vid-text">
+											<h1><a href="video-detail.html">@item.video_name</a></h1>
+											<p class="vid-info-text">
+												<span>( @item.login_id  </span>
+												<span>&#47;</span>
+												<span>@item.totalview views )</span>
+											</p>
+										</div>
+									</div>
+								</div>
+            }

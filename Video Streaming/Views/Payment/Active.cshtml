@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Video_Streaming.Dbml.tbl_subscription>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+<section class="panel">
+	<header class="panel-heading">
+		<div class="panel-actions">
+			<a href="tables-advanced.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+			<a href="tables-advanced.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+		</div>
+	<h2 class="panel-title">Payment</h2>
+	</header>
+	<div class="panel-body">
+       
+	           <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-tabletools" data-swf-path='@Url.Content("~/vendor/jquery-datatables/extras/TableTools/csv_xls_pdf.swf")' role="grid" aria-describedby="datatable-tabletools_info">
+
+	        <thead>
+	            <tr>
+       
+        <th>
+         Login Name
+        </th>
+        <th>
+           Payment Date
+        </th>
+        <th>
+            Subscription end Date
+        </th>
+        <th>
+         Payment Amt
+        </th>
+        <th>Action</th>
+    </tr>
+  </thead>
+	        <tbody>
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_registration.reg_fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sub_pay_date)
+        </td>
+        <td>
+            @item.sub_end_date.ToShortDateString()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sub_amt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.sub_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.sub_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.sub_id })
+        </td>
+     </tr>
+              }                
+             </tbody>
+         </table>
+       </div>
+    </section>
+<script>
+    function fnmenu() {
+
+        $('#video').addClass('nav-active');
+    }
+        </script>    

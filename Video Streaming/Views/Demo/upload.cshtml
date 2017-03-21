@@ -1,0 +1,38 @@
+﻿@model Video_Streaming.Models.Model_demo
+
+@{
+    ViewBag.Title = "upload";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+<h2>upload</h2>
+
+@using (Html.BeginForm("upload", "Demo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Model_demo</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+             <input type ="file" name="file1" id="file1" />
+        </div>
+
+        <p>
+            <input type="submit" value="Upload" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

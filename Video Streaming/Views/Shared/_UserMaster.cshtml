@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta property="og:url"           content="@ViewBag.videourl" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="@ViewBag.Title" />
+    <meta property="og:description"   content="ONDEMAND ADOPTIVE BANDWIDTH MANAGEMENT FOR VIDEO STREAMING. The main objectives of the site is show videos streaming and buffering are major issues, that’s why we are introduce Adoptive Bandwidth management." />
+    <meta property="og:image"         content="@ViewBag.videothumb" />
+
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+     <link rel="icon" href='@Url.Content("~/favicon1.ico")' />
+	<link rel="shortcut icon" type="image/x-icon" href='@Url.Content("~/favicon1.ico")'/>
+	<!-- Style Sheets -->
+	<link rel="stylesheet" type="text/css" href='@Url.Content("~/css/bootstrap.min.css")'>
+	<!-- Font Icons -->
+	<link rel="stylesheet" type="text/css" href='@Url.Content("~/css/font-awesome.min.css")'>
+	<link rel="stylesheet" type="text/css" href='@Url.Content("~/css/ionicons.min.css")'>
+	<link rel="stylesheet" type="text/css" href='@Url.Content("~/css/socicon-styles.css")'>	
+	<!-- Font Icons -->
+	<link rel="stylesheet" href='@Url.Content("~/css/hover-min.css")' />
+	<link rel="stylesheet" href='@Url.Content("~/css/animate.css")' />
+	<link rel="stylesheet" href='@Url.Content("~/css/css-menu.css")' />
+	<link rel="stylesheet" href='@Url.Content("~/css/owl.carousel.css")' />
+	<link rel="stylesheet" href='@Url.Content("~/css/loader.css")' />
+	<link rel="stylesheet" href='@Url.Content("~/css/theme-custom.css")' />
+	 <!-- Flowplayer skin -->
+   <link rel="stylesheet" href='@Url.Content("~/css/flowplayerskin.css")'>
+	<!-- Flowplayer library -->
+   <script src='@Url.Content("~/js/flowplayer.min.js")'></script>
+    <!-- The hlsjs plugin for playback of HLS without Flash in modern browsers -->
+   <script src='@Url.Content("~/js/flowplayer.hlsjs.min.js")'></script>
+	
+    <link rel="stylesheet" type="text/css" href='@Url.Content("~/css/styles.css")'>
+	<link rel="stylesheet" type="text/css" href='@Url.Content("~/css/responsive.css")'>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+#hlsjsvod {
+  background-image: url(@ViewBag.videothumb);
+}
+
+.hlsjs-supported {
+  font-weight: bold;
+}
+</style>
+</head>
+<body onload="fnmenu()">
+    <div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- Loader -->
+<div id="loader-container" style="display: none;">
+	<div id="loader">
+	  <ul>
+	    <li></li>
+	    <li></li>
+	    <li></li>
+	    <li></li>
+	    <li></li>
+	    <li></li>
+	  </ul>
+	</div>
+</div>
+<!-- Loader -->
+
+<div id="wrapper">
+	<div id="main-content">
+	<!-- Main Bar-->
+	<div id="main-bar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 col-sm-5 col-xs-6 border-right">
+					<div class="logo">
+						<a href="/Home">
+							<img class="img-responsive" src='@Url.Content("~/images/logo.png")' alt="Logo">	
+						</a>
+					</div>					
+				</div>
+				<div class="col-sm-7 col-xs-6 hidden-md hidden-lg text-right">
+					<button type="button" class="btn btn-default btn-create-album">
+						Create nn Album
+					</button>
+				</div>
+				<div class="clearfix visible-sm"></div>
+				<div class="clearfix visible-xs"></div>
+				<div class="col-md-6 col-sm-4 border-right sm-border-top">
+					<div class="search-box">
+						<form method="post">
+							<input name="search" id="search" class="form-control" placeholder="Search Albums" required="" type="text">
+							<button type="submit" class="search-icon">
+								<i class="fa fa-search"></i>
+							</button>
+						</form>						
+					</div>
+				</div>
+				<div class="col-md-2 col-sm-4 sm-border-top">
+					<div class="social-icon" style="padding-top: 0px;padding-bottom: 0px;">
+                        <a href="/video/upload">
+							<img class="img-responsive" src='@Url.Content("~/images/upload.jpg")' alt="Lojgo">	
+						</a> 
+						@*<ul class="list-inline list-unstyled">
+							<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="index.html#"><i class="fa fa-vimeo"></i></a></li>
+							<li><a href="index.html#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="index.html#"><i class="fa fa-youtube"></i></a></li>
+						</ul>*@
+					</div>
+				</div>
+				<div class="col-md-2 col-sm-4 border-left sm-border-top">
+                    <div class="login" style="padding-top: 14px; padding-bottom: 13px; height: 70px;">
+						<div class="media">
+							<div class="media-left" style="width: 60px; height: 46px; padding-left: 0px;">
+                                <img class="img-responsive" src="@Video_Streaming.SessionData.photo" alt="Logkjbo">
+							</div>
+							<div class="media-body" style="padding-top: 5px;"> 
+								<p>
+							Welcome @Video_Streaming.SessionData.fname
+                                     @{if (Video_Streaming.SessionData.fname == "Guest")
+                                            {
+                                            <a href="/registration/signup">Register</a>
+                                            <a href="/login/signin">Login</a>
+                                            }
+                                      }
+                                      @{if (Video_Streaming.SessionData.fname != "Guest")
+                                            {
+                                            <a href="/registration/Edit/@Video_Streaming.SessionData.UserId">Profile</a> 
+                                            <a href="/login/logout">Logout</a>
+                                            }
+                                      }
+								</p>
+							</div>
+						</div>									
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Main Bar -->
+
+	<!-- Main Navigation -->
+	<div id="main-navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div id="cssmenu">
+						<ul id="menulist">
+						  </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Main Navigation -->
+
+	<!-- Main Section -->
+	<div id="main-section borderless">
+		<div class="container">
+			  @RenderBody()
+		</div>
+	</div>
+	<!-- Main Section -->
+
+	<!-- Secondary Section -->
+	
+
+	<!-- Secondary Section -->
+
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<div class="footer-about wow fadeIn" data-wow-duration="0.5s" style="visibility: visible; animation-duration: 0.5s; animation-name: fadeIn;">
+						<div class="vid-heading">
+							<span>About</span>
+							<div class="hding-bottm-line"></div>
+						</div>
+						<img class="img-responsive"     src='@Url.Content("~/images/logo.png")' alt="Logo">
+						<p>
+							ONDEMAND ADOPTIVE BANDWIDTH MANAGEMENT FOR VIDEO STREAMING. The main objectives of the site is show videos streaming and buffering are major issues, that’s why we are introduce Adoptive Bandwidth management.
+						</p>
+						<ul class="bottom-social list-inline list-unstyled">
+							<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
+							
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="bottom-post wow fadeIn" data-wow-duration="0.5s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.2s; animation-name: fadeIn;">
+						<div class="vid-heading">
+							<span>Latest Posts</span>
+							<div class="hding-bottm-line"></div>
+						</div>
+						<div class="latest-post">
+							<div class="media">
+								<div class="media-left">
+									<img class="thumb" src="https://d3n8dmuoyz8caz.cloudfront.net/vlcsnap-2017-02-17-12h53m39s614.png" alt="video">
+								</div>
+								<div class="media-body">
+									<h1><a href="blog-detail.html">Ae Dil Hai Mushkil</a></h1>
+									<p>
+										<span><i class="fa fa-comment"></i> 10</span>
+										<span><i class="fa fa-eye"></i> 534</span>
+									</p>
+								</div>
+							</div>
+							<div class="media">
+								<div class="media-left">
+									<img class="thumb" src="https://d3n8dmuoyz8caz.cloudfront.net/vlcsnap-2017-02-13-18h55m26s102.png" alt="video">
+								</div>
+								<div class="media-body">
+									<h1><a href="/video/details/36">The Humma Song – OK Jaanu</a></h1>
+									<p>
+										<span><i class="fa fa-comment"></i> 10</span>
+										<span><i class="fa fa-eye"></i> 534</span>
+									</p>
+								</div>
+							</div>
+							<div class="media">
+								<div class="media-left">
+									<img class="thumb" src="https://d3n8dmuoyz8caz.cloudfront.net/vlcsnap-2017-02-13-19h01m10s490.png" alt="video">
+								</div>
+								<div class="media-body">
+									<h1><a href="/video/details/37">Zaalima - Raees </a></h1>
+									<p>
+										<span><i class="fa fa-comment"></i> 10</span>
+										<span><i class="fa fa-eye"></i> 534</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="bottom-categories wow fadeIn" data-wow-duration="0.5s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.4s; animation-name: fadeIn;">
+						<div class="vid-heading">
+							<span>Categories</span>
+							<div class="hding-bottm-line"></div>
+						</div>
+						<ul class="category-list list-unstyled">
+							<li><a href="/home/category/2">Animation</a></li>
+							<li><a href="/home/category">Movie Trailers</a></li>
+							<li><a href="/home/category/5">Comedy</a></li>
+							<li><a href="/home/category/6">Music</a></li>
+							<li><a href="/home/category/7">Nature</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="sendus wow fadeIn" data-wow-duration="0.5s" data-wow-delay="0.6s" style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.6s; animation-name: fadeIn;">
+						<div class="vid-heading">
+							<span>Send Us Message</span>
+							<div class="hding-bottm-line"></div>
+						</div>
+						<div id="contact-form">
+							<div class="expMessage"></div>
+							<form class="send-form" novalidate="novalidate">
+								<input name="formInput[name]" id="name" class="form-control half-wdth-field" placeholder="Name" required="" type="text">
+								<input name="formInput[email]" id="email" class="form-control half-wdth-field pull-right" placeholder="Email" required="" type="email">
+
+								<textarea name="formInput[message]" id="message" class="form-control" rows="4" placeholder="Message" required=""></textarea>
+								<input name="action" value="submitform" type="hidden">
+								<div>
+									<button type="submit" value="submit" class="btn btn-send">
+										Submit
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- copyright -->	
+	<div id="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<p>
+						Copyright 2016 by My Tube. All right reserved.@* Template by <a href="../../../www.ewebcraft.com/www_ewebcraft_default.html">ewebcraft*@</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- copyright -->
+
+	</div>
+
+</div>		
+	
+	<!-- Scripts -->
+	<script src='@Url.Content("~/js/wow.min.js")'></script>
+	<script src='@Url.Content("~/js/jquery-1.12.3.min.js")'></script>
+	<script src='@Url.Content("~/js/bootstrap.min.js")'></script>
+	<script src='@Url.Content("~/js/css-menu.js")'></script>
+	<script src='@Url.Content("~/js/jquery.validate.js")'></script>
+	<script src='@Url.Content("~/js/owl.carousel.min.js")'></script>
+	<script src='@Url.Content("~/js/custom.js")'></script>	
+	<script type="text/javascript">
+	    window.onload = function () {
+	        flowplayer("#hlsjsvod", {
+	            splash: true,
+	            ratio: 5 / 12,
+
+	            // manual HLS level selection for Drive videos
+	            hlsQualities: "drive",
+
+	            clip: {
+	                sources: [
+                      {
+                          type: "application/x-mpegurl",
+                          src: "@ViewBag.videopath"
+                      }
+	                ]
+	            }
+
+	            });
+
+          };
+	    $().ready(function () {
+	        $.ajax(
+                 {
+                     url: "@Url.Action("menu", "Home")",
+                       type: "POST",
+                       error: function () {
+                           //     alert("Error");
+                       },
+                       success: function (data) {
+                           console.log(data);
+                           $("#menulist").html(data);
+                       }
+                   })
+	        $('.send-form').validate({
+	            submitHandler: function () {
+	                var curForm = $('.send-form');
+	                $("&lt;div /&gt;").addClass("formOverlay").appendTo(curForm);
+
+	                $.ajax({
+	                    url: 'mail.php',
+	                    type: 'POST',
+	                    data: curForm.serialize(),
+	                    success: function (data) {
+	                        var res = data.split("::");
+	                        curForm.find("div.formOverlay").remove();
+	                        curForm.prev('.expMessage').html(res[1]);
+	                        if (res[0] == 'Success') {
+	                            curForm.remove();
+	                            curForm.prev('.expMessage').html('');
+	                        }
+	                    }
+	                });
+	                return false;
+	            }
+	        })
+	    })
+	    function fnmenu() {
+	        $.ajax(
+                   {
+                       url: "@Url.Action("menu", "Home")",
+                       type: "POST",
+                       error: function () {
+                           //     alert("Error");
+                       },
+                       success: function (data) {
+
+                           $("#menulist").html(data);
+                       }
+                   })
+	        
+	    }
+	</script>
+
+	@RenderSection("scripts", required: false)
+
+</body></html>

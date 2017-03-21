@@ -1,0 +1,111 @@
+﻿@model Video_Streaming.Models.Model_video
+
+@{
+    ViewBag.Title = "upload";
+    Layout = "~/Views/Shared/_UserMaster.cshtml";
+}
+
+<script type="text/javascript" src="~/Scripts/jquery-1.7.1.js"></script>
+<script>
+
+    $(function () {
+        $("#cat_id").change(
+            function () {
+                $.ajax(
+                   {
+                       url: "@Url.Action("Loadsubcat", "Video")",
+                       data: { "id": $(this).val() }
+                        , type: "POST",
+                        error: function () {
+                            var items = "<option value='0'>---Select---</option>";
+                            $("#sub_cat_id").html(items);
+                       //     alert("Error");
+                        },
+                        success: function (data) {
+                        
+                            var items = "<option value='0'>---Select---</option>";
+                            $.each(data, function (i, item) {
+                                items += "<option value='" + item.Value + "'>" + item.Text + "</option>";
+                            })
+                            $("#sub_cat_id").html(items);
+                        }
+                    })
+            });
+    });
+    </script>
+
+    
+@using (Html.BeginForm("Upload", "Video", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{@Html.ValidationSummary(true)
+<div class="panel panel-info">
+                        <div class="panel-heading">
+                             <div class="panel-title login-title">Video Upload</div>
+                        </div>  
+                        <div class="panel-body" >
+                            <div id="signupform" class="form-horizontal" role="form">
+                                
+                                <div id="signupalert" style="display:none" class="alert alert-danger">
+                                    <p>Error:</p>
+                                    <span></span>
+                                </div>
+                                     <div class="form-group">
+                                    <label for="lastname" class="col-md-3 control-label">Category Name</label>
+                                    <div class="col-md-9">
+                                        @Html.DropDownListFor(model => model.cat_id,(IEnumerable<SelectListItem>)ViewBag.categoryid,"---select---", new { @class="form-control"})
+                                       <div class="error"> @Html.ValidationMessageFor(model => model.cat_id)</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-md-3 control-label">Sub Category Name</label>
+                                    <div class="col-md-9">
+                                       	@Html.DropDownListFor(model => model.sub_cat_id,(IEnumerable<SelectListItem>)ViewBag.subcategoryid,"---select---", new { @class="form-control" })
+                                      <div class="error">  @Html.ValidationMessageFor(model => model.sub_cat_id)</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-md-3 control-label">Video Name</label>
+                                    <div class="col-md-9">
+                                       		@Html.TextBoxFor(model => model.video_name, new { @class="form-control", @title="Please enter a Video name." ,@placeholder="Video Name" })
+                                          <div class="error">  @Html.ValidationMessageFor(model => model.video_name)</div>
+                                    </div>
+                                </div>
+                                    
+                                <div class="form-group">
+                                    <label for="firstname" class="col-md-3 control-label">Video Description</label>
+                                    <div class="col-md-9">
+                                        @Html.TextAreaFor(model => model.video_des, new { @class="form-control",@rows="3", @title="Please enter a Video description." ,@placeholder="Video description" })
+                                       <div class="error"> @Html.ValidationMessageFor(model => model.video_des)</div>
+                                    </div>
+                                </div>
+                                
+                                    
+                                <div class="form-group">
+                                    <label for="icode" class="col-md-3 control-label">Video file</label>
+                                    <div class="col-md-9">
+                                        <input type ="file" name="file1" id="file1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- Button -->                                        
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Upload Video</button>
+                                    </div>
+                                </div>
+                          
+                                
+                                
+                                
+                            </div>
+                         </div>
+                    </div>
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,104 @@
+﻿@model Video_Streaming.Models.Model_city
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.7.1.js"></script>
+<script>
+
+    $(function () {
+        $("#country_id").change(
+            function () {
+                $.ajax(
+                   {
+                       url: "@Url.Action("Loadstate", "City")",
+                       data: { "id": $(this).val() }
+                        , type: "POST",
+                        error: function () {
+                            var items = "<option value='0'>---Select---</option>";
+                            $("#state_id").html(items);
+                       //     alert("Error");
+                        },
+                        success: function (data) {
+                        
+                            var items = "<option value='0'>---Select---</option>";
+                            $.each(data, function (i, item) {
+                                items += "<option value='" + item.Value + "'>" + item.Text + "</option>";
+                            })
+                            $("#state_id").html(items);
+                        }
+                    })
+            });
+    });
+    </script>
+
+<div class="row">
+	<div class="col-xs-12">
+    @using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+		<div id="form" class="form-horizontal">
+			<section class="panel">
+				<header class="panel-heading">
+					<div class="panel-actions">
+						<a href="forms-validation-state.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+						<a href="forms-validation-state.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+					</div>
+                    <h2 class="panel-title">City</h2>
+					<p class="panel-subtitle">
+						Basic validation will display a label with the error after the form control.
+					</p>
+				</header>
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Country Name <span class="required">*</span></label>
+						<div class="col-sm-9">
+							@Html.DropDownListFor(model => model.country_id,(IEnumerable<SelectListItem>)ViewBag.countryid,"---select---", new { @class="form-control" })
+                            <div class="error"> @Html.ValidationMessageFor(model => model.country_id)</div>
+						</div>
+					</div>
+                  
+	  				<div class="form-group">
+	  					<label class="col-sm-3 control-label">State Name <span class="required">*</span></label>
+	  					<div class="col-sm-9">
+	  						@Html.DropDownListFor(model => model.state_id,(IEnumerable<SelectListItem>)ViewBag.stateid,"----select----", new { @class="form-control" })
+            			   <div class="error">  @Html.ValidationMessageFor(model => model.state_id)</div>
+                                  </div>
+	  				</div>
+	  				
+	  				<div class="form-group">
+	  					<label class="col-sm-3 control-label">City Name <span class="required">*</span></label>
+	  					<div class="col-sm-9">
+	  					 @Html.TextBoxFor(model => model.city_name, new  { @class="form-control", @title="Please enter a City name." ,@placeholder="City Name" })
+	  					  <div class="error">@Html.ValidationMessageFor(model => model.city_name)</div>
+                          </div>
+	  				</div>
+					
+				</div>
+				<footer class="panel-footer">
+					<div class="row">
+						<div class="col-sm-9 col-sm-offset-3">
+							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="reset" class="btn btn-default">Reset</button>
+						</div>
+					</div>
+				</footer>
+			</section>
+		</div>
+        
+}
+</div>
+</div>
+<script>
+    function fnmenu() {
+
+        $('#addcity').addClass('nav-active');
+    }
+        </script>    
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

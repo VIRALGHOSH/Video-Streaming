@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Video_Streaming.Dbml.tbl_feedback>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+
+<section class="panel">
+	<header class="panel-heading">
+		<div class="panel-actions">
+			<a href="tables-advanced.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+			<a href="tables-advanced.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+		</div>
+	<h2 class="panel-title">Feedback</h2>
+	</header>
+	<div class="panel-body">
+       
+	           <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-tabletools" data-swf-path='@Url.Content("~/vendor/jquery-datatables/extras/TableTools/csv_xls_pdf.swf")' role="grid" aria-describedby="datatable-tabletools_info">
+
+	        <thead>
+	            <tr>
+                    
+                    <th>Name</th>
+                    <th>Email</th>
+        <th>
+            Feedback Description
+        </th><th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+	        <tbody>
+            @foreach (var item in Model) {
+                <tr><td>
+            @Html.DisplayFor(modelItem => item.f_name)
+        </td><td>
+            @Html.DisplayFor(modelItem => item.f_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.f_des)
+        </td>
+                    <td>@item.f_date.ToShortDateString()</td>
+
+                    <td>
+                        @{
+                        
+                            var str ="";
+                            if(item.f_status == true)
+                            {
+
+                                str = "Approved";
+                            }
+                            else
+                            {
+                                str = "Pending";
+                            }
+                            }    
+                        @str
+                    </td>
+                    <td>
+            @Html.ActionLink("Details", "Details", new { id=item.f_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.f_id })
+                    </td>
+                </tr>
+              }                
+             </tbody>
+         </table>
+       </div>
+    </section>
+
+<table>
+    <tr>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+         
+        </td>
+    </tr>
+}
+
+</table>
+<script>
+            function fnmenu() {
+             
+                $('#feedback').addClass('nav-active');
+        }
+        </script>    

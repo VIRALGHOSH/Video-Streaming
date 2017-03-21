@@ -1,0 +1,47 @@
+/* Add here all your CSS customizations */
+/* Base */
+
+#success_message{ display: none;}
+
+.panel-heading.bg-info {
+	background: #fff;
+	color: #FFF;
+	border-bottom: 0 none;
+	border-right: 0 none;
+}
+
+
+html .panel-info .panel-heading {
+	background: #AE0101;
+}
+
+.login-title {
+   
+    color: #fff;
+}
+.ab {
+    color: #fff;
+}
+
+#borderless {
+    margin-top: 0;
+}
+.circle {
+  border-radius: 50%;
+  max-width: 50%;
+}
+
+.error {
+    color: red;
+}
+.thumb{
+    width: 120px;
+}
+.required {
+    color: #d2322d;
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: bold;
+    position: relative;
+    top: -0.2em;
+}

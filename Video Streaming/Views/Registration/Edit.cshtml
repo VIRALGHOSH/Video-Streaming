@@ -1,0 +1,184 @@
+﻿@model Video_Streaming.Models.Model_Login_Register
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_UserMaster.cshtml";
+}
+
+<script type="text/javascript" src="~/Scripts/jquery-1.7.1.js"></script>
+<script>
+
+    $(function () {
+        $("#country_id").change(
+            function () {
+                $.ajax(
+                   {
+                       url: "@Url.Action("Loadstate", "Registration")",
+                       data: { "id": $(this).val() }
+                        , type: "POST",
+                        error: function () {
+                            alert("Error");
+                        },
+                        success: function (data) {
+                        
+                            var items = "<option value='0'>--Select--</option>";
+                            $.each(data, function (i, item) {
+                                items += "<option value='" + item.Value + "'>" + item.Text + "</option>";
+                            })
+                            $("#state_id").html(items);
+                        }
+                    })
+            });
+    });
+    $(function () {
+        $("#state_id").change(
+            function () {
+                $.ajax(
+                   {
+                       url: "@Url.Action("Loadcity", "Registration")",
+                       data: { "id": $(this).val() }
+                        , type: "POST",
+                       error: function () {
+                           alert("Error");
+                       },
+                       success: function (data) {
+
+                           var items = "<option value='0'>--Select--</option>";
+                           $.each(data, function (i, item) {
+                               items += "<option value='" + item.Value + "'>" + item.Text + "</option>";
+                           })
+                           $("#city_id").html(items);
+                       }
+                   })
+            });
+     });
+    </script>
+
+
+<div id="signupbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">   
+    
+@using (Html.BeginForm("Edit", "Registration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{@Html.ValidationSummary(true)                 
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title login-title">Update Details</div>
+                       
+                          
+                        </div>  
+                        <div class="panel-body" >
+                            <div id="signupform" class="form-horizontal" role="form">
+                                
+                                <div id="signupalert" style="display:none" class="alert alert-danger">
+                                    <p>Error:</p>
+                                    <span></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-md-3 control-label">Profile Photo</label>
+                                    <div class="col-md-9">
+                                      <img class="img-thumbnail circle" src="@Model.mdregister.reg_photo" alt="photo" />
+                                          @Html.HiddenFor(model => model.mdregister.reg_id)
+                                          @Html.HiddenFor(model => model.mdlogin.login_id)
+                                          @*@Html.HiddenFor(Model => Model.mdregister.reg_photo)*@
+                                        <input type ="file" name="file1" />
+                                        
+                                    </div>
+                                </div>
+                                                                     
+                                <div class="form-group">
+                                    <label for="email" class="col-md-3 control-label">Email</label>
+                                    <div class="col-md-9">
+                                        
+                                       @Html.TextBoxFor(model => model.mdlogin.email, new  { @class="form-control", @title="Please enter your First name." ,@placeholder="Email address" })
+                                      <div class="error"> @Html.ValidationMessageFor(model => model.mdlogin.email)</div>
+                                    </div>
+                                </div>  
+                                    
+                                <div class="form-group">
+                                    <label for="firstname" class="col-md-3 control-label">First Name</label>
+                                    <div class="col-md-9">
+                                         @Html.TextBoxFor(model => model.mdregister.reg_fname, new  { @class="form-control", @title="Please enter your First name." ,@placeholder="First Name" })
+                                        <div class="error">  @Html.ValidationMessageFor(model => model.mdregister.reg_fname)</div>
+                                            
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(model => model.mdregister.reg_lname, new  { @class="form-control", @title="Please enter your First name." ,@placeholder="Last Name" })
+                                      <div class="error">  @Html.ValidationMessageFor(model => model.mdregister.reg_lname)</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-md-3 control-label">Password</label>
+                                    <div class="col-md-9">
+                                         @Html.TextBoxFor(model => model.mdlogin.password, new  { @class="form-control", @title="Please enter your First name." ,@placeholder="Password" })
+                                          <div class="error"> @Html.ValidationMessageFor(model => model.mdlogin.password)</div>
+                                    </div>
+                                </div>
+                                      <div class="form-group">
+                                    <label for="lastname" class="col-md-3 control-label">Gender</label>
+                                    <div class="col-md-9">
+                                        @Html.DropDownListFor(model => model.mdregister.reg_gender,(IEnumerable<SelectListItem>)ViewBag.genderid,"---Select---", new  { @class="form-control",@id="gender_id"})
+                                      <div class="error">  @Html.ValidationMessageFor(model => model.mdregister.reg_gender)</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="add" class="col-md-3 control-label">Address</label>
+                                    <div class="col-md-9">
+                                         @Html.TextAreaFor(model => model.mdregister.reg_address, new  { @class="form-control", @title="Please enter your First name." ,@placeholder="Address goes here" })
+                                         <div class="error">  @Html.ValidationMessageFor(model => model.mdregister.reg_address)</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="add" class="col-md-3 control-label">Country</label>
+                                    <div class="col-md-9">
+                                         @Html.DropDownListFor(model => model.mdregister.country_id,(IEnumerable<SelectListItem>)ViewBag.countryid,"---Select---", new  { @class="form-control",@id="country_id"})
+                                        <div class="error">  @Html.ValidationMessageFor(model => model.mdregister.country_id)</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="add" class="col-md-3 control-label">State</label>
+                                    <div class="col-md-9">
+                                          @Html.DropDownListFor(model => model.mdregister.state_id,(IEnumerable<SelectListItem>)ViewBag.stateid,"---Select---", new  { @class="form-control" ,@id="state_id"})
+                                       <div class="error">  @Html.ValidationMessageFor(model => model.mdregister.state_id)</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="add" class="col-md-3 control-label">City</label>
+                                    <div class="col-md-9">
+                                         @Html.DropDownListFor(model => model.mdregister.city_id,(IEnumerable<SelectListItem>)ViewBag.cityid,"---Select---", new  { @class="form-control",@id="city_id"})
+                                     <div class="error">    @Html.ValidationMessageFor(model => model.mdregister.city_id)</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="add" class="col-md-3 control-label">Phone No</label>
+                                    <div class="col-md-9">
+                                         @Html.TextBoxFor(model => model.mdregister.reg_phno, new  { @class="form-control", @title="Please enter your First name." ,@placeholder="Phone number" })
+                                        <div class="error"> @Html.ValidationMessageFor(model => model.mdregister.reg_phno)</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <!-- Button -->                                        
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Update</button>
+                                       
+                                    </div>
+                                </div>
+                                                
+                            </div>
+                         </div>
+                          </div>
+
+ } 
+  
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+</div> 
+
+
+
