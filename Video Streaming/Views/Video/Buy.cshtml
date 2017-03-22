@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Buy";
+    Layout = "~/Views/Shared/_UserMaster.cshtml";
+}
+
+
+<link href='@Url.Content("~/css/public?v=dyD1wowgtvUyInonrLu3QNlfv8ZwzZKvX8XQFHZT63o1")' rel="stylesheet"/>
+<link href='@Url.Content("~/css/public.css")' rel="stylesheet"/>
+ <style>
+     #footer {
+    background: #f4f4f4  none repeat scroll 0 0;
+}
+     #h2 {
+     color:red;
+     
+     }
+            #home-slider-1 {
+                padding-top: 65px !important;
+            }
+        
+    </style>   
+<div id="home-slider-1">
+    <div class="container">
+        <div class="wow fadeInDown heading-full text-left">
+            <h2 id="h2">Access Denied</h2>
+            <span></span>
+        </div>
+        <div class="col-md-12">
+            <h3>Premium Video,</h3>
+            <p class="justify">
+               Hi <b>@Session["fname"]</b> , The video your trying to view is a <b>premium</b> video. Please go back and watch other free videos on your domain OR click below to Suscribe to Premium videos.
+            </p>
+            <br />  
+            <b> Please <a href="/payment/paypal">Click Here</a> to Suscribe to Premium videos.</b></div>
+    </div>
+    <br /><br /><br />
+</div>
+ <br />

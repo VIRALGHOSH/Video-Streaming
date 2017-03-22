@@ -837,6 +837,7 @@
     <Content Include="Views\Payment\Active.cshtml" />
     <Content Include="Views\Payment\Paypal.cshtml" />
     <Content Include="Views\Registration\Confirm.cshtml" />
+    <Content Include="Views\Video\Buy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

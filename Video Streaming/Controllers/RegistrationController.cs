@@ -78,7 +78,7 @@ namespace Video_Streaming.Controllers
                 //host = host + GetUniqueKey(64);
                 //string sendurl = "http://" + host;
                 //SendMail(obj.mdlogin.email, "Confirm Email", sendurl);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Confirm");
             }
             else
             {

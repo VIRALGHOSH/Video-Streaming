@@ -208,9 +208,7 @@ namespace Video_Streaming.Controllers
             }
             else if (db.tbl_videos.Where(x => x.video_paid == true && x.video_id == id && SessionData.ustatus == "Free").Count() > 0)
             {
-
-
-                return RedirectToAction("active", "payment");
+                return RedirectToAction("Buy");
             }
             else
             {
@@ -310,7 +308,11 @@ namespace Video_Streaming.Controllers
             db.SubmitChanges();
         return RedirectToAction("Index");
         }
-        
+
+        public ActionResult Buy()
+        {
+            return View(); 
+        }
         public ActionResult Loadsubcat(int id)
         {
             var data = from subcat in db.tbl_sub_categories
