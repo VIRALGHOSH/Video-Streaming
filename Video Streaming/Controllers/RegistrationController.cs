@@ -304,6 +304,10 @@ namespace Video_Streaming.Controllers
             }
 
         }
+        public ActionResult Confirm()
+        {
+            return View(); 
+        }
         public static string GetUniqueKey(int maxSize)
         {
             char[] chars = new char[62];
