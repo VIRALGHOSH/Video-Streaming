@@ -39,7 +39,7 @@
     <tr>
        
         <td>
-            @Html.DisplayFor(modelItem => item.login_id)
+            @Html.DisplayFor(modelItem => item.tbl_registration.reg_fname)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.sub_pay_date)
@@ -51,9 +51,7 @@
             @Html.DisplayFor(modelItem => item.sub_amt)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.sub_id }) |
             @Html.ActionLink("Details", "Details", new { id=item.sub_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.sub_id })
         </td>
      </tr>
               }                
@@ -64,6 +62,6 @@
 <script>
     function fnmenu() {
 
-        $('#video').addClass('nav-active');
+        $('#payment').addClass('nav-active');
     }
         </script>    

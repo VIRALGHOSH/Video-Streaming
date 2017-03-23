@@ -1,0 +1,44 @@
+﻿@model Video_Streaming.Models.PayPalModel
+@{
+    ViewBag.Title = "PayPal redirect";
+    Layout = "~/Views/Shared/_UserMaster.cshtml";
+}
+<body>
+    <form id="hiddenform" action="@Model.actionURL">
+        @Html.HiddenFor(model => model.cmd)
+        @Html.HiddenFor(model => model.business)
+        @Html.HiddenFor(model => model.no_shipping)
+        @Html.HiddenFor(model => model.@return)
+        @Html.HiddenFor(model => model.cancel_return)
+        @Html.HiddenFor(model => model.notify_url)
+        @Html.HiddenFor(model => model.currency_code)
+        @Html.HiddenFor(model => model.item_name)
+        @Html.HiddenFor(model => model.amount)
+         @*<input type="hidden" name="item_name" value="Something"/> 
+    <input type="submit" value="Subscribe!" /> 
+
+    <input type="hidden" name="a1" value="0"/> 
+    <input type="hidden" name="p1" value="3"/> 
+    <input type="hidden" name="t1" value="D"/> 
+    <input type="hidden" name="a3" value="@Model.amount"/> 
+    <input type="hidden" name="p3" value="1"/> 
+    <input type="hidden" name="t3" value="M"/> 
+    <input type="hidden" name="src" value="1"/> 
+    <input type="hidden" name="srt" value="0"/> 
+    <input type="hidden" name="sra" value="1"/> *@
+    </form>
+
+    <p style="text-align: center">
+        <h3>Connecting to Paypal , please wait ...
+
+        </h3>
+    </p>
+</body>
+@Scripts.Render("~/bundles/jquery")
+
+<script type="text/javascript" language="javascript">
+    $(this.document).ready(function () {
+        var form = $("form");
+        form.submit();
+    });
+</script>

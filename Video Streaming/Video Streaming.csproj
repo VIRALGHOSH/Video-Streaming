@@ -212,6 +212,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Controllers\Sub_CategoryController.cs" />
@@ -244,6 +245,7 @@
     <Compile Include="Models\Model_video.cs" />
     <Compile Include="Models\Model_video_page.cs" />
     <Compile Include="Models\Model_view.cs" />
+    <Compile Include="Models\PayPalModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="S3Class.cs" />
     <Compile Include="SessionData.cs" />
@@ -838,6 +840,13 @@
     <Content Include="Views\Payment\Paypal.cshtml" />
     <Content Include="Views\Registration\Confirm.cshtml" />
     <Content Include="Views\Video\Buy.cshtml" />
+    <Content Include="Views\PayPal\Index.cshtml" />
+    <Content Include="Views\PayPal\CancelFromPaypal.cshtml" />
+    <Content Include="Views\PayPal\NotifyFromPaypal.cshtml" />
+    <Content Include="Views\PayPal\RedirectFromPaypal.cshtml" />
+    <Content Include="Views\PayPal\ValidateCommand.cshtml" />
+    <Content Include="Views\Account\Profileinfo.cshtml" />
+    <Content Include="Views\Account\accountinfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

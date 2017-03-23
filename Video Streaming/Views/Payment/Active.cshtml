@@ -31,7 +31,7 @@
         <th>
          Payment Amt
         </th>
-        <th>Action</th>
+       
     </tr>
   </thead>
 	        <tbody>
@@ -50,11 +50,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.sub_amt)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.sub_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.sub_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.sub_id })
-        </td>
+     
      </tr>
               }                
              </tbody>
@@ -64,6 +60,6 @@
 <script>
     function fnmenu() {
 
-        $('#video').addClass('nav-active');
+        $('#subcription').addClass('nav-active');
     }
         </script>    

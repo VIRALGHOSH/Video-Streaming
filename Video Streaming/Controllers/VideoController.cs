@@ -134,6 +134,7 @@ namespace Video_Streaming.Controllers
             tb.video_name = obj.video_name;
             tb.video_des = obj.video_des;
             tb.video_date = DateTime.Today;
+            tb.video_paid = false;
             db.tbl_videos.InsertOnSubmit(tb);
             db.SubmitChanges();
             return RedirectToAction("Index");

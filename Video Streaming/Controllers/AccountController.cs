@@ -10,16 +10,87 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using Video_Streaming.Filters;
 using Video_Streaming.Models;
+using Video_Streaming.Dbml;
 
 namespace Video_Streaming.Controllers
 {
-    [Authorize]
-    [InitializeSimpleMembership]
+   
     public class AccountController : Controller
     {
         //
         // GET: /Account/Login
+        DataClasses1DataContext db = new DataClasses1DataContext();
+        public ActionResult accountinfo()
+        {
+            return View();
+        }
+        public ActionResult Profileinfo()
+        {
+            int id = SessionData.UserId;
+            Model_registration obj = db.tbl_registrations.Where(x => x.login_id == id).Select(x => new Model_registration()
+            {
+                reg_id = x.reg_id,
+                reg_fname = x.reg_fname,
+                reg_lname = x.reg_lname,
+                login_id = x.login_id,
+                reg_photo = x.reg_photo,
+                reg_address = x.reg_address,
+                country_id = x.country_id,
+                state_id = x.state_id,
+                city_id = x.city_id,
+                reg_phno = x.reg_phno,
+                reg_gender = x.reg_gender
+            }).SingleOrDefault();
+            ViewBag.countryid = new SelectList(db.tbl_countries.ToList(), "country_id", "country_name", obj.country_id);
+            ViewBag.stateid = new SelectList(db.tbl_states.ToList(), "state_id", "state_name", obj.state_id);
+            ViewBag.cityid = new SelectList(db.tbl_cities.ToList(), "city_id", "city_name", obj.city_id);
+            ViewBag.genderid = new SelectList(db.tbl_genders.ToList(), "gen_id", "gen_name", obj.reg_gender);
 
+            Model_login obj2 = db.tbl_logins.Where(x => x.login_id == obj.login_id).Select(x => new Model_login()
+            {
+                login_id = x.login_id,
+                email = x.email,
+                password = x.password
+            }).SingleOrDefault();
+            Model_Login_Register mdlgrg = new Model_Login_Register();
+
+            mdlgrg.mdregister = obj;
+            mdlgrg.mdlogin = obj2;
+            return View(mdlgrg);
+        }
+        //[HttpPost]
+        //public ActionResult Edit(Model_Login_Register obj)
+        //{
+        //    HttpPostedFileBase file = Request.Files["file1"];
+        //    tbl_login tbl = db.tbl_logins.Where(x => x.login_id == obj.mdlogin.login_id).Single<tbl_login>();
+        //    tbl.email = obj.mdlogin.email;
+        //    tbl.password = obj.mdlogin.password;
+        //    db.SubmitChanges();
+
+        //    tbl_registration tb = db.tbl_registrations.Where(x => x.reg_id == obj.mdregister.reg_id).Single<tbl_registration>();
+        //    if (file.FileName != "")
+        //    {
+        //        var filename = Path.GetFileName(file.FileName);
+        //        var path = Path.Combine(Server.MapPath("~/fileupload"), filename);
+        //        file.SaveAs(path);
+        //        S3Class s3obj = new S3Class();
+        //        string str = s3obj.putObject("all.input.video.streaming", path, file.FileName.Replace(' ', '_'));
+        //        tb.reg_photo = str;
+        //        SessionData.photo = str;
+        //    }
+
+        //    tb.reg_fname = obj.mdregister.reg_fname;
+        //    tb.reg_lname = obj.mdregister.reg_lname;
+        //    tb.reg_address = obj.mdregister.reg_address;
+        //    tb.country_id = obj.mdregister.country_id;
+        //    tb.state_id = obj.mdregister.state_id;
+        //    tb.city_id = obj.mdregister.city_id;
+        //    tb.reg_phno = obj.mdregister.reg_phno;
+        //    tb.login_id = tbl.login_id;
+        //    db.SubmitChanges();
+        //    return RedirectToAction("Index", "Home");
+
+        //}
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
