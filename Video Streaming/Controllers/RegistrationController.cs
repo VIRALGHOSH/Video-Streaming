@@ -9,6 +9,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Video_Streaming.Dbml;
+using Video_Streaming.Filters;
 using Video_Streaming.Models;
 
 namespace Video_Streaming.Controllers
@@ -92,6 +93,7 @@ namespace Video_Streaming.Controllers
 
             }
         }
+       
         public ActionResult Edit(int id)
         {
 
@@ -126,6 +128,7 @@ namespace Video_Streaming.Controllers
             mdlgrg.mdlogin = obj2;
             return View(mdlgrg);
         }
+        [CustomAuthorization_User(LoginPage = "~/Login/signin")]
         [HttpPost]
         public ActionResult Edit(Model_Login_Register obj)
         {

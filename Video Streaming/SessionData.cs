@@ -76,6 +76,18 @@ namespace Video_Streaming
             }
             set { HttpContext.Current.Session["ustatus"] = value; }
         }
+        public static string currenturl
+        {
+            get
+            {
+                if (Convert.ToString(HttpContext.Current.Session["currenturl"]) == "")
+                {
+                    HttpContext.Current.Session["currenturl"] = "http://35.187.84.85/";
+                }
+                return Convert.ToString(HttpContext.Current.Session["currenturl"]);
+            }
+            set { HttpContext.Current.Session["currenturl"] = value; }
+        }
 
       public static string photo
         {

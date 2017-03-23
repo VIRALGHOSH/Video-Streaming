@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Confirm";
+    Layout = "~/Views/Shared/_UserMaster.cshtml";
+}
+<link href='@Url.Content("~/css/public?v=dyD1wowgtvUyInonrLu3QNlfv8ZwzZKvX8XQFHZT63o1")' rel="stylesheet"/>
+<link href='@Url.Content("~/css/public.css")' rel="stylesheet"/>
+ <style>
+      #footer {
+    background: #f4f4f4  none repeat scroll 0 0;
+}
+       
+            #home-slider-1 {
+                padding-top: 65px !important;
+            }
+        
+    </style>   
+<div id="home-slider-1">
+    <div class="container">
+        <div class="wow fadeInDown heading-full text-left">
+            <h2>You've already bought the Month Pass</h2>
+            <span></span>
+        </div>
+        <div class="col-md-12">
+            <h4>Hi @Session["fname"] ,</h4>
+            <p class="justify">
+               It seems you purchased this before. We'll only charge you once for it.
+            </p>
+          
+        </div>
+    </div>
+    <br /><br /><br />
+</div>
+ <br />

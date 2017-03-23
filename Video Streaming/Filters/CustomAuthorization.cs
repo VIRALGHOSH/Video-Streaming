@@ -16,6 +16,7 @@ namespace Video_Streaming.Filters
            
             if (SessionData.AdminId == 0)
             {
+                SessionData.currenturl = HttpContext.Current.Request.Url.AbsoluteUri; 
                 filterContext.HttpContext.Response.Redirect(LoginPage);
             }
         }
@@ -30,7 +31,7 @@ namespace Video_Streaming.Filters
            
             if (SessionData.UserId == 0)
             {
-                SessionData.ustatus = HttpContext.Current.Request.Url.AbsoluteUri; 
+                SessionData.currenturl = HttpContext.Current.Request.Url.AbsoluteUri; 
                 filterContext.HttpContext.Response.Redirect(LoginPage);
             }
         }

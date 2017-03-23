@@ -75,7 +75,7 @@ namespace Video_Streaming.Controllers
                     {
                         SessionData.ustatus = "Paid";
                     }
-                    return RedirectToAction("Index", "Home");
+                    return Redirect(SessionData.currenturl);
                 }
                 else
                 {

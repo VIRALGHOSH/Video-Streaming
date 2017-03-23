@@ -43,7 +43,7 @@ namespace Video_Streaming.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.error = "Please check your username n password";
-            return RedirectToAction("Signin");
+            return Redirect(SessionData.currenturl);
         }
 
     }
