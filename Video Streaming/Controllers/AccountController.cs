@@ -20,10 +20,23 @@ namespace Video_Streaming.Controllers
         //
         // GET: /Account/Login
         DataClasses1DataContext db = new DataClasses1DataContext();
+        [CustomAuthorization_User(LoginPage = "~/Login/signin")]
         public ActionResult accountinfo()
         {
-            return View();
+            Model_subscription obj = db.tbl_subscriptions.Where(x => x.login_id == SessionData.UserId).Select(x => new Model_subscription() { 
+           sub_end_date = x.sub_end_date
+            
+            }).SingleOrDefault();
+            if (SessionData.ustatus == "Free")
+            {
+                ViewBag.msg = "TRUE";
+            }
+            else {
+                ViewBag.msg = "FALSE";
+            }
+            return View(obj);
         }
+        [CustomAuthorization_User(LoginPage = "~/Login/signin")]
         public ActionResult Profileinfo()
         {
             int id = SessionData.UserId;

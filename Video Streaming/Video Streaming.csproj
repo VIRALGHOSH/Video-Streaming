@@ -848,6 +848,12 @@
     <Content Include="Views\Account\Profileinfo.cshtml" />
     <Content Include="Views\Account\accountinfo.cshtml" />
     <Content Include="Views\Payment\paid.cshtml" />
+    <Content Include="Views\Video\Print.cshtml" />
+    <Content Include="Views\Country\Print.cshtml" />
+    <Content Include="Views\Feedback\Print.cshtml" />
+    <Content Include="Views\Complain\Print.cshtml" />
+    <Content Include="Views\City\Print.cshtml" />
+    <Content Include="Views\Category\Print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

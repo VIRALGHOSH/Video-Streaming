@@ -1,6 +1,33 @@
 ﻿@{
-    ViewBag.Title = "CancelFromPaypal";
+    ViewBag.Title = "Purchase Cancelled";
     Layout = "~/Views/Shared/_UserMaster.cshtml";
 }
-
-<h2>CancelFromPaypal</h2>
+<link href='@Url.Content("~/css/public?v=dyD1wowgtvUyInonrLu3QNlfv8ZwzZKvX8XQFHZT63o1")' rel="stylesheet"/>
+<link href='@Url.Content("~/css/public.css")' rel="stylesheet"/>
+ <style>
+      #footer {
+    background: #f4f4f4  none repeat scroll 0 0;
+}
+       
+            #home-slider-1 {
+                padding-top: 65px !important;
+            }
+        
+    </style>   
+<div id="home-slider-1">
+    <div class="container">
+        <div class="wow fadeInDown heading-full text-left">
+            <h2>Purchase Cancelled</h2>
+            <span></span>
+        </div>
+        <div class="col-md-12">
+            <h4>Hi @Session["fname"] ,</h4>
+            <p class="justify">
+               It seems you cancelled the Subscription. Please contact us if you have any issue regarding your payment or our services.
+            </p>
+          
+        </div>
+    </div>
+    <br /><br /><br />
+</div>
+ <br />

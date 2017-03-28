@@ -24,6 +24,11 @@ namespace Video_Streaming.Controllers
             
             return View(db.tbl_videos.ToList());
         }
+        public ActionResult Print()
+        {
+
+            return View(db.tbl_videos.ToList());
+        }
 
         public ActionResult Create()
         {

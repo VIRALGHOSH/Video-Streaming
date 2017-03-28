@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Video_Streaming.Dbml.tbl_video>
+
+@{
+    ViewBag.Title = "Video ";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+
+
+<section class="panel">
+	<header class="panel-heading">
+		<div class="panel-actions">
+			<a href="tables-advanced.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+			<a href="tables-advanced.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+		</div>
+	<h2 class="panel-title">Video</h2>
+	</header>
+	<div class="panel-body">
+       
+	           <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-tabletools" data-swf-path='@Url.Content("~/vendor/jquery-datatables/extras/TableTools/csv_xls_pdf.swf")' role="grid" aria-describedby="datatable-tabletools_info">
+
+	        <thead>
+	            <tr>
+                    <th>
+        Category Name
+        </th>
+        <th>
+            Sub Category Name
+        </th>
+        <th>
+          Video Name
+        </th>
+       @* <th>
+         Video Description
+        </th>
+        <th>
+          Video Path
+        </th>*@
+                    <th>Date</th>
+                   
+                </tr>
+            </thead>
+	        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                   <td>
+            @Html.DisplayFor(modelItem => item.tbl_category.cat_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_sub_category.sub_cat_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.video_name)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.video_des)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.video_path)
+        </td>*@
+                    <td>@item.video_date.ToShortDateString()</td>
+                   
+                </tr>
+              }                
+             </tbody>
+         </table>
+       </div>
+    </section>
+<script>
+            function fnmenu() {
+             
+                $('#video').addClass('nav-active');
+        }
+        </script>    
+

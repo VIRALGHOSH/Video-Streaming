@@ -22,6 +22,11 @@ namespace Video_Streaming.Controllers
             Session["complainunread"] = db.tbl_complains.Where(x => x.com_status == false).Count();
             return View(db.tbl_complains.ToList());
         }
+        public ActionResult Print()
+        {
+
+            return View(db.tbl_complains.ToList());
+        }
         public ActionResult Create()
         {
             return View();

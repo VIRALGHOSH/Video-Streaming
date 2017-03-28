@@ -19,7 +19,11 @@ namespace Video_Streaming.Controllers
         {
             return View(db.tbl_cities.ToList());
         }
+        public ActionResult Print()
+        {
 
+            return View(db.tbl_cities.ToList());
+        }
         [CustomAuthorization_Admin(LoginPage = "/admin/signin")]
         public ActionResult Create()
         {
