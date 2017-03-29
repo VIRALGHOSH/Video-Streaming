@@ -327,30 +327,12 @@
     <Content Include="css\styles.css" />
     <Content Include="css\theme-custom.css" />
     <Content Include="favicon1.ico" />
-    <Content Include="fileupload\1.mp4" />
-    <Content Include="fileupload\big_buck_bunny_240p_1mb.mp4" />
-    <Content Include="fileupload\big_buck_bunny_360p_1mb.mp4" />
-    <Content Include="fileupload\big_buck_bunny_480p_1mb.mp4" />
-    <Content Include="fileupload\big_buck_bunny_720p_1mb.mp4" />
-    <Content Include="fileupload\Capture.PNG" />
-    <Content Include="fileupload\COVER.jpg" />
-    <Content Include="fileupload\Nikon-1-V3-sample-photo.jpg" />
-    <Content Include="fileupload\play-button.png" />
-    <Content Include="fileupload\pooja.jpg" />
-    <Content Include="fileupload\sample-1.jpg" />
-    <Content Include="fileupload\sample-2.jpg" />
-    <Content Include="fileupload\sample-3.jpg" />
-    <Content Include="fileupload\sample-photo.jpg" />
-    <Content Include="fileupload\sample1_l.jpg" />
-    <Content Include="fileupload\viral.jpg" />
-    <Content Include="fileupload\voter card tracking.JPG" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\hinted-Montserrat-Bold.svg" />
     <Content Include="fonts\ionicons.svg" />
     <Content Include="fonts\socicon.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fileupload\Automatic Call Receiver_v1.5_apkpure.com.apk" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -854,9 +836,15 @@
     <Content Include="Views\Complain\Print.cshtml" />
     <Content Include="Views\City\Print.cshtml" />
     <Content Include="Views\Category\Print.cshtml" />
+    <Content Include="Views\Account\History.cshtml" />
+    <Content Include="Views\Video\View.cshtml" />
+    <Content Include="Views\Login\Print.cshtml" />
+    <Content Include="Views\State\Print.cshtml" />
+    <Content Include="Views\Sub_Category\Print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="fileupload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

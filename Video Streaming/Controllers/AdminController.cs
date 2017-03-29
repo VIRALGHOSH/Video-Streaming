@@ -28,7 +28,7 @@ namespace Video_Streaming.Controllers
             Session["feedbackunread"] = db.tbl_feedbacks.Where(x => x.f_status == false).Count();
             ViewBag.views = db.tbl_views.Count();
             ViewBag.videostranscoded = ViewBag.videos * 3;
-            ViewBag.payment = db.tbl_subscriptions.Sum(x => x.sub_amt);
+            ViewBag.payment  = db.tbl_subscriptions.Sum(x => x.sub_amt);
             return View();
         }
         public ActionResult Signin()

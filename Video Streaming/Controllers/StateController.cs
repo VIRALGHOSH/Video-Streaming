@@ -19,6 +19,10 @@ namespace Video_Streaming.Controllers
         {
             return View(db.tbl_states.ToList());
         }
+        public ActionResult Print()
+        {
+            return View(db.tbl_states.ToList());
+        }
         [CustomAuthorization_Admin(LoginPage = "/admin/signin")]
         public ActionResult Create()
         {

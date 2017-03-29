@@ -44,15 +44,15 @@ color:black;
         <a class="btn btn-lg btn-info" style="font-size:medium;" href="/account/accountinfo">Account Settings</a>  
     </h2></div><div class="col-sm-12"></div>
 <div class="col-sm-1"></div><div class="col-sm-1" style="width:60px"></div>
-<div class="col-sm-4 info" ><b style="font-size:16px">Membership:</b> <br />
+<div class="col-sm-4 info" style="font-size:14px" ><b style="font-size:17px">Membership:</b> <br />
 
     Your membership @if(ViewBag.msg== "TRUE")
     { <span> <b>has ended</b> </span>}
     @if(ViewBag.msg== "FALSE")
-    { <span> <b>will end</b> </span>}  on  @Model.sub_end_date.ToShortDateString() <br /><br /><a href="ed" class="link">View full history</a>
+    { <span> <b>will end</b> </span>}  on  @Model.sub_end_date.ToShortDateString() <br /><br />
 </div><div class="col-sm-1" style="width:20px"></div>
-<div class="col-sm-4 info">
-    <b style="font-size:16px">Payment Details: </b><br />
+<div class="col-sm-4 info" style="font-size:14px">
+    <b style="font-size:17px">Payment Details: </b><br />
     
     @if(ViewBag.msg== "TRUE")
     {
@@ -68,6 +68,9 @@ color:black;
 
      <br /></div>
 <br /><hr />
-<div class="col-sm-12" style="height:60px"></div>
-<br />
+<div class="col-sm-12" style="height:10px"></div>
 
+<br />
+<div class="col-sm-1"></div><div class="col-sm-1" style="width:60px"></div>
+<a style="float:left" href="/account/history" class="link">View full history</a>
+<div class="col-sm-12" style="height:30px"></div>

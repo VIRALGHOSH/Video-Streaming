@@ -29,7 +29,10 @@ namespace Video_Streaming.Controllers
 
             return View(db.tbl_videos.ToList());
         }
-
+        public ActionResult View()
+        {
+            return View(db.tbl_views.ToList());
+        }
         public ActionResult Create()
         {
             ViewBag.categoryid = new SelectList(db.tbl_categories.ToList(), "cat_id", "cat_name");

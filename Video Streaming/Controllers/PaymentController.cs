@@ -27,6 +27,12 @@ namespace Video_Streaming.Controllers
         [CustomAuthorization_User(LoginPage = "~/Login/signin")]
         public ActionResult Paypal()
         {
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult Paypal(Int16 id)
+        {
             if (db.tbl_subscriptions.Where(x => x.sub_end_date > DateTime.Now && SessionData.ustatus == "Free").Count() > 0)
             {
                 tbl_subscription tb = new tbl_subscription();

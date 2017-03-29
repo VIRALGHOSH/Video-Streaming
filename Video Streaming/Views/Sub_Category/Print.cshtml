@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Video_Streaming.Dbml.tbl_sub_category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<section class="panel">
+	<header class="panel-heading">
+		<div class="panel-actions">
+			<a href="tables-advanced.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+			<a href="tables-advanced.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+		</div>
+	<h2 class="panel-title">Sub Category</h2>
+	</header>
+	<div class="panel-body">
+       
+	    <table class="table table-bordered table-striped mb-none" id="datatable-default">
+	        <thead>
+	            <tr>
+                      <th>Category Names
+        </th>
+        <th>
+           Sub Category Name
+        </th>
+        <th>
+                      Sub Category Description
+        </th>
+                </tr>
+            </thead>
+	        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                   <td>
+            @Html.DisplayFor(modelItem => item.tbl_category.cat_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sub_cat_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sub_cat_des)
+        </td>
+                  
+                </tr>
+              }                
+             </tbody>
+         </table>
+       </div>
+    </section>
+<script>
+            function fnmenu() {
+             
+                $('#subcategory').addClass('nav-active');
+        }
+        </script>    
