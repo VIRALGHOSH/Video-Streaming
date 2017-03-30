@@ -1,52 +1,61 @@
-﻿@model IEnumerable<Video_Streaming.Dbml.tbl_state>
+﻿@model IEnumerable<Video_Streaming.Dbml.tbl_subscription>
 
 @{
-    ViewBag.Title = "State Report";
+    ViewBag.Title = "Subscription Report";
     Layout = "~/Views/Shared/_AdminMaster.cshtml";
 }
-
-
 <section class="panel">
 	<header class="panel-heading">
 		<div class="panel-actions">
 			<a href="tables-advanced.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
 			<a href="tables-advanced.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
 		</div>
-	<h2 class="panel-title">State Report</h2>
+	<h2 class="panel-title">Payment Details Report</h2>
 	</header>
 	<div class="panel-body">
-        
+       
 	           <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-tabletools" data-swf-path='@Url.Content("~/vendor/jquery-datatables/extras/TableTools/csv_xls_pdf.swf")' role="grid" aria-describedby="datatable-tabletools_info">
 
 	        <thead>
 	            <tr>
-                     <th>
-           Country Name
+       
+        <th>
+         Login Name
         </th>
         <th>
-            State Name
+           Payment Date
         </th>
-                </tr>
-            </thead>
+     
+        <th>
+         Payment Amt
+        </th>
+     
+    </tr>
+  </thead>
 	        <tbody>
-            @foreach (var item in Model) {
-                <tr>
-                     <td>
-            @Html.DisplayFor(modelItem => item.tbl_country.country_name)
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_registration.reg_fname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.state_name)
+            @Html.DisplayFor(modelItem => item.sub_pay_date)
         </td>
-                   
-                </tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.sub_amt) $
+        </td>
+     
+     </tr>
               }                
              </tbody>
          </table>
        </div>
     </section>
 <script>
-            function fnmenu() {
-             
-                $('#state').addClass('nav-active');
-        }
+    function fnmenu() {
+
+        $('#payment').addClass('nav-active');
+    }
         </script>    

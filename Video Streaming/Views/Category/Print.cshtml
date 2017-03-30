@@ -15,7 +15,7 @@
 			<a href="tables-advanced.html#" class="panel-action panel-action-toggle" data-panel-toggle></a>
 			<a href="tables-advanced.html#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
 		</div>
-	<h2 class="panel-title">Category</h2>
+	<h2 class="panel-title">Category Report</h2>
 	</header>
 	<div class="panel-body">
        
@@ -29,7 +29,6 @@
         <th>
            Category Description
         </th>
-                    <th>Action</th>
                 </tr>
             </thead>
 	        <tbody>
@@ -42,11 +41,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.cat_des)
         </td>
-                    <td>
-                     @Html.ActionLink("Edit", "Edit", new { id = item.cat_id }) |
-               
-                     @Html.ActionLink("Delete", "Delete", new { id = item.cat_id })
-                    </td>
+                
                 </tr>
               }                
              </tbody>

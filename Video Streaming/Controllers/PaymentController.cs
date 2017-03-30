@@ -20,6 +20,10 @@ namespace Video_Streaming.Controllers
         {
             return View(db.tbl_subscriptions.ToList());
         }
+        public ActionResult Print()
+        {
+            return View(db.tbl_subscriptions.ToList());
+        }
         public ActionResult Active()
         {
             return View(db.tbl_subscriptions.Where(x => x.sub_end_date > DateTime.Now).ToList());
