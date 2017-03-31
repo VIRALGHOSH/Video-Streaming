@@ -1,0 +1,117 @@
+﻿@model Video_Streaming.Models.Model_video
+
+@{
+    ViewBag.Title = "TestPage";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+<h2>TestPage</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Model_video</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.video_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.video_id)
+            @Html.ValidationMessageFor(model => model.video_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.login_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.login_id)
+            @Html.ValidationMessageFor(model => model.login_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cat_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cat_id)
+            @Html.ValidationMessageFor(model => model.cat_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.sub_cat_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.sub_cat_id)
+            @Html.ValidationMessageFor(model => model.sub_cat_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.video_name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.video_name)
+            @Html.ValidationMessageFor(model => model.video_name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.video_des)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.video_des)
+            @Html.ValidationMessageFor(model => model.video_des)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.video_path)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.video_path)
+            @Html.ValidationMessageFor(model => model.video_path)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.video_thumb)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.video_thumb)
+            @Html.ValidationMessageFor(model => model.video_thumb)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.video_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.video_date)
+            @Html.ValidationMessageFor(model => model.video_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.totalview)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.totalview)
+            @Html.ValidationMessageFor(model => model.totalview)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.video_paid)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.video_paid)
+            @Html.ValidationMessageFor(model => model.video_paid)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

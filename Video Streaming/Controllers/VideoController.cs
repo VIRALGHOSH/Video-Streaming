@@ -20,8 +20,7 @@ namespace Video_Streaming.Controllers
       
         [CustomAuthorization_Admin(LoginPage = "/admin/signin")]
         public ActionResult Index()
-        {
-            
+        {   
             return View(db.tbl_videos.ToList());
         }
         public ActionResult Print()
@@ -29,7 +28,7 @@ namespace Video_Streaming.Controllers
 
             return View(db.tbl_videos.ToList());
         }
-        public ActionResult View()
+        public ActionResult View1()
         {
             return View(db.tbl_views.ToList());
         }
@@ -65,7 +64,6 @@ namespace Video_Streaming.Controllers
             db.SubmitChanges();
             return RedirectToAction("Index");
          }
-
         public ActionResult Edit(int id)
         {
             Model_video obj = db.tbl_videos.Where(x => x.video_id == id).Select(x => new Model_video()
@@ -404,6 +402,10 @@ namespace Video_Streaming.Controllers
             db.tbl_comments.InsertOnSubmit(tbl);
             db.SubmitChanges();
             return RedirectToAction("Test");
+        }
+        public ActionResult TestPage()
+        {
+            return View();
         }
     }
 }

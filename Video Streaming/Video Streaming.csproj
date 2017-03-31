@@ -837,11 +837,12 @@
     <Content Include="Views\City\Print.cshtml" />
     <Content Include="Views\Category\Print.cshtml" />
     <Content Include="Views\Account\History.cshtml" />
-    <Content Include="Views\Video\View.cshtml" />
+    <Content Include="Views\Video\View1.cshtml" />
     <Content Include="Views\Login\Print.cshtml" />
     <Content Include="Views\State\Print.cshtml" />
     <Content Include="Views\Sub_Category\Print.cshtml" />
     <Content Include="Views\Payment\Print.cshtml" />
+    <Content Include="Views\Video\TestPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
