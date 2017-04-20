@@ -114,9 +114,9 @@ namespace Video_Streaming.Controllers
                if (db.tbl_logins.Where(x => x.email == obj.email).Count() > 0)
                {
                    tbl_login tbl = db.tbl_logins.Where(x => x.email == obj.email).Single<tbl_login>();
-
-                   SendMail(obj.email, "Forgot Password", "Your password : " + tbl.password);
-
+                   tbl_registration tbl2 = db.tbl_registrations.Where(x => x.login_id == tbl.login_id).Single<tbl_registration>();
+                   //SendMail(obj.email, "Forgot Password,"+ tbl2.reg_fname + ",Your password : " + tbl.password);
+                   SendMail(obj.email,tbl2.reg_fname,"Forgot Password","Your password : " + tbl.password);
                    ModelState.AddModelError("sucess", "Email Sucessfully sent, check your Email address");
                    return View();
                }
@@ -141,7 +141,7 @@ namespace Video_Streaming.Controllers
                  }).SingleOrDefault();
                    return View(log);
                }
-               ModelState.AddModelError("error", "Invalid Activation Url or Account Already Activated");
+               ModelState.AddModelError("error", "Invalid activation url or account already activated");
                    return View();
            }
         [HttpPost]
@@ -149,7 +149,7 @@ namespace Video_Streaming.Controllers
            {
                 if (db.tbl_logins.Where(x => x.login_id == obj.login_id && x.log_status == "Active").Count() > 0)
                    {
-                       ModelState.AddModelError("error", "Your Email ID is already Activated");
+                       ModelState.AddModelError("error", "Your email is already activated");
                        return RedirectToAction("Signin");
                    }
                    else
@@ -160,13 +160,13 @@ namespace Video_Streaming.Controllers
                         db.SubmitChanges();
                         return RedirectToAction("SignIn");
                     }
-                    ModelState.AddModelError("error", "Invalid Activation Url");
+                    ModelState.AddModelError("error", "Invalid activation url");
                        
                        return View();
                    }
            
            }
-           public static void SendMail(string strTo, string strSubject, string strBody)
+        public static void SendMail(string strTo, string strfname, string strSubject, string strBody)
            {
                try
                {
@@ -178,7 +178,7 @@ namespace Video_Streaming.Controllers
                   
                    mail.IsBodyHtml = true;
                    string htmlBody;
-                   htmlBody = "Dear User,<br /> We received a request for Password recovery <br />" + strBody + "<br /><a href='http://35.187.84.85/login/Signin' target='_blank'>Click Here</a> to Login into your Account<br /><br />Regards,<br />The MyTube team<hr />";
+                   htmlBody = "Dear + strfname +,<br /> We received a request for Password recovery <br />" + strBody + "<br /><a href='http://35.187.84.85/login/Signin' target='_blank'>Click Here</a> to Login into your Account<br /><br />Regards,<br />The MyTube team<hr />";
                    //htmlBody = strBody;
                    mail.Body = htmlBody;
                    SmtpServer.Port = 587;
@@ -188,6 +188,7 @@ namespace Video_Streaming.Controllers
                }
                catch (Exception ex)
                {
+                  
                                
                }
           

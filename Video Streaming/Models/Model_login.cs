@@ -11,7 +11,7 @@ namespace Video_Streaming.Models
         public int login_id { get; set; }
         [Display(Name = "Email address")]
         [Required(ErrorMessage = "Email address is required")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [EmailAddress(ErrorMessage = "Please provide a valid a email address(abc@gmail.com)")]
         public string email { get; set; }
         //[Required(ErrorMessage = "Please Specify a password")]
         [Required]

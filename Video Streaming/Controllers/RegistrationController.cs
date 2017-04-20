@@ -39,7 +39,7 @@ namespace Video_Streaming.Controllers
                 string host = Request.Url.Authority;
                 string key = GetUniqueKey(64);
                 string sendurl = "http://" + host + "/login/Activate/"+ key;
-                SendMail(obj.mdlogin.email, "Confirm Registration Email", sendurl);
+                SendMail(obj.mdlogin.email,obj.mdregister.reg_fname, "Confirm Registration Email", sendurl);
 
                 HttpPostedFileBase file = Request.Files["file1"];
                 tbl_login tbl = new tbl_login();
@@ -252,10 +252,12 @@ namespace Video_Streaming.Controllers
             else if (db.tbl_logins.Where(x => x.email == obj.email).Count() > 0)
             {
                 tbl_login tbl = db.tbl_logins.Where(x => x.email == obj.email).Single<tbl_login>();
+                tbl_registration tbl2 = db.tbl_registrations.Where(x => x.login_id == tbl.login_id).Single<tbl_registration>();
+
                 string host = Request.Url.Authority;
                 string key = GetUniqueKey(64);
                 string sendurl = "http://" + host + "/login/Activate/" + key;
-                SendMail(obj.email, "Confirm Registration Email", sendurl);
+                SendMail(obj.email,tbl2.reg_fname, "Confirm Registration Email", sendurl);
                 tbl.log_status = key;
                 db.SubmitChanges();
                 ModelState.AddModelError("error", "Activation Email Sent");
@@ -283,7 +285,7 @@ namespace Video_Streaming.Controllers
                        select cites;
             return Json(new SelectList(data, "city_id", "city_name"));
         }
-        public static void SendMail(string strTo, string strSubject, string strBody)
+        public static void SendMail(string strTo, string strfname, string strSubject, string strBody)
         {
             try
             {
@@ -294,7 +296,7 @@ namespace Video_Streaming.Controllers
                 mail.Subject = " MyTube -" + strSubject;
                 mail.IsBodyHtml = true;
                 string htmlBody;
-                htmlBody = "Dear User,<br /> we received a request for Account Creation <br /><a href='" + strBody + "' target='_blank'>Go to this page</a> to Activate your Account<br /><br />Regards,<br />The MyTube team<hr />If you are unable to clink on the link please copy paste this url on your broser <br /> " + strBody;
+                htmlBody = "Dear + strfname +,<br /> we received a request for Account Creation <br /><a href='" + strBody + "' target='_blank'>Go to this page</a> to Activate your Account<br /><br />Regards,<br />The MyTube team<hr />If you are unable to clink on the link please copy paste this url on your broser <br /> " + strBody;
                 mail.Body = htmlBody;
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("ghoshviral@gmail.com", "viral.com");
